@@ -269,8 +269,9 @@ nav.tabs .cnt{position:absolute;top:5px;left:calc(50% + 6px);min-width:16px;heig
 .cinetop{position:absolute;top:calc(11% - 36px);left:5%;right:5%;display:flex;justify-content:space-between;align-items:center;font:600 11px var(--f-display);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .cinetop button{pointer-events:auto;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:6px 12px;font:600 12px var(--f-body);letter-spacing:.04em;cursor:pointer}
 .cinetop button:hover{background:rgba(255,255,255,.2)}
-.cinetop>span:first-child,.cinetop>button{flex:1 1 0;min-width:0}
-.cinetop>button{flex:0 0 auto;margin-left:auto}
+.stage .cinetop{display:grid;grid-template-columns:1fr auto 1fr;gap:10px}
+.cinetop>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cinetop>button{justify-self:end}
 .cinebrand{flex:none;display:flex;align-items:baseline;gap:10px;color:#fff;letter-spacing:.06em;text-shadow:0 1px 12px rgba(0,0,0,.6)}
 .cinebrand b{font:700 clamp(20px,2.8vw,32px)/1 var(--f-display);letter-spacing:.24em;color:#fff}
 .cinebrand b i{font-style:normal;color:var(--accent)}
