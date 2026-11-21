@@ -2,7 +2,7 @@
 <html lang="es">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Planta Norte 3D</title>
+<title>Planta Norte 3D · KAIROS</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -269,6 +269,18 @@ nav.tabs .cnt{position:absolute;top:5px;left:calc(50% + 6px);min-width:16px;heig
 .cinetop{position:absolute;top:calc(11% - 36px);left:5%;right:5%;display:flex;justify-content:space-between;align-items:center;font:600 11px var(--f-display);letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 .cinetop button{pointer-events:auto;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:6px 12px;font:600 12px var(--f-body);letter-spacing:.04em;cursor:pointer}
 .cinetop button:hover{background:rgba(255,255,255,.2)}
+.cinetop>span:first-child,.cinetop>button{flex:1 1 0;min-width:0}
+.cinetop>button{flex:0 0 auto;margin-left:auto}
+.cinebrand{flex:none;display:flex;align-items:baseline;gap:10px;color:#fff;letter-spacing:.06em;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+.cinebrand b{font:700 clamp(20px,2.8vw,32px)/1 var(--f-display);letter-spacing:.24em;color:#fff}
+.cinebrand b i{font-style:normal;color:var(--accent)}
+.cinebrand span{font:600 clamp(10px,1.1vw,13px) var(--f-display);letter-spacing:.22em;color:rgba(255,255,255,.75)}
+@media (max-width:560px){.cinebrand span{display:none}}
+
+/* marca */
+.brand{display:flex;flex-direction:column;flex:1;min-width:0}
+.brand .by{font:700 11px/1.2 var(--f-display);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand .by b{color:var(--accent);font-weight:700}
 
 /* logística */
 .logi{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:2;display:flex;gap:10px;align-items:center;background:rgba(10,16,20,.82);border:1px solid rgba(242,163,58,.5);border-radius:999px;padding:6px 12px;font-size:12.5px;white-space:nowrap;pointer-events:none}
@@ -280,7 +292,7 @@ nav.tabs .cnt{position:absolute;top:5px;left:calc(50% + 6px);min-width:16px;heig
 
 <div class="banner gut">Planta de demostración · Datos simulados</div>
 <header class="top gut"><div class="wrap">
-  <h1 id="vtitle">Planta en 3D</h1>
+  <div class="brand"><span class="by"><b>KAIROS</b> · Soluciones Digitales</span><h1 id="vtitle">Planta en 3D</h1></div>
   <span class="clock" id="clock"></span>
   <button class="ibtn" id="fsBtn" title="Pantalla completa" aria-label="Pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
 </div></header>
@@ -323,7 +335,7 @@ nav.tabs .cnt{position:absolute;top:5px;left:calc(50% + 6px);min-width:16px;heig
     <div class="cine-ui" id="cineUI" aria-hidden="true">
       <div class="cinefade" id="cineFade"></div>
       <div class="lb t"></div><div class="lb b"></div>
-      <div class="cinetop"><span id="cineShot">Planta Norte</span><button id="cineExit">Salir ✕</button></div>
+      <div class="cinetop"><span id="cineShot">Planta Norte</span><span class="cinebrand"><b>KAIR<i>O</i>S</b><span>Soluciones Digitales</span></span><button id="cineExit">Salir ✕</button></div>
       <div class="cinecap" id="cineCap"><div class="bar2"></div><h4></h4><p></p></div>
     </div>
     <div class="hud">
@@ -1461,7 +1473,7 @@ function init3D(){
       if(i===5&&logi.vs[1])L.push({d:8,cap:['Robot paletizador','Toma cada caja del final de la línea y arma el pallet'],col:'#b6d43a',area:'emb',f:(u,P,T)=>{const g=-2.3+u*1.4,R=4.2;P.set(29.0+Math.sin(g)*R,2.9,Math.max(-15,.9+Math.cos(g)*R));T.set(29.2,1.1,.9);}});
       L.push(followShot(logi.vs[1],'Retiro de pallets','La traspaleta lleva el pallet terminado al andén de carga',8));});
     if(logi.vs[2])L.push(followShot(logi.vs[2],'Traspaleta eléctrica','Lleva materia prima al inicio de la línea',7));
-    L.push({d:9,cap:['Planta Norte','Gemelo digital de la planta · datos simulados'],f:(u,P,T)=>{P.set(LV(0,-8,u),LV(8,42,u),LV(24,52,u));T.set(0,LV(1,0,u),0);}});
+    L.push({d:9,cap:['KAIROS Soluciones Digitales','Gemelo digital de Planta Norte · datos simulados'],f:(u,P,T)=>{P.set(LV(0,-8,u),LV(8,42,u),LV(24,52,u));T.set(0,LV(1,0,u),0);}});
     return L;}
   function followShot(v,t1,t2,d){return{d,follow:true,cap:[t1,t2],f:(u,P,T)=>{const bx=-Math.sin(v.head),bz=-Math.cos(v.head),sx=Math.cos(v.head),sz=-Math.sin(v.head),side=1.6-u*3.2;
     P.set(v.x+bx*4.4+sx*side,2.7,v.z+bz*4.4+sz*side);P.z=Math.max(-16,Math.min(16,P.z));P.x=Math.max(-31,Math.min(31,P.x));T.set(v.x-bx*1.2,.9,v.z-bz*1.2);}};}
